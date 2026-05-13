@@ -51,3 +51,9 @@ tags:
 - **Decisions:** המודל `gpt-image-2` נשמר כפי שהמשתמש דרש — לא הוצעו אלטרנטיבות. ה-SKILL כולל גם fallback Python כי `jq` לא תמיד מותקן (Git Bash). placeholders של יעל הולכים גם ל-MD וגם ל-HTML (לא רק ל-MD כפי שהיה אפשר לקרוא בספציפיקציה הראשונית) — כדי שראובן יוכל לבצע substitution בטוח בשני הקבצים. שלב 5 ב-pipeline (substitution) הוא תמיד באחריות ראובן, לא של יובל או יעל.
 - **Notes / Caveats:** יובל מוגדר אבל לא מופעל אוטומטית בהארנס הזה (ה-Agent tool רואה רק 6 סוכנים מובנים; ראה [[yael-agent#2026-05-13 — first article rewrite]]). הפעלה דרך CLI מקומי של Claude Code תזהה את הסוכן מה-`description`. עד שיהיו `reference/` תמונות אמיתיות, יובל יעבוד עם prompt ניטרלי.
 - **Related:** [[yael-agent]], [[claude-directory-layout]], [[project-scaffolding]], [[obsidian-skills]]
+
+### 2026-05-13 — first image generation [shipped]
+- **What was done:** המשתמש מילא `OPENAI_API_KEY` ב-`.env` וביקש "תמונה של כלב". יובל הופעל (דרך fallback `general-purpose` עם ה-system prompt שלו), זיהה ש-`yuval/reference/` ריקה, ניסח prompt מקצועי באנגלית (Golden Retriever, golden-hour lighting, 85mm f/2.0, photorealistic), קרא ל-`gpt-image-gen` והפיק `yuval/outputs/2026-05-13-friendly-dog-portrait.png` (1024×1024, ~1.6MB, RGB 8-bit) + sibling `.txt` עם ה-prompt המלא (714 bytes).
+- **Decisions:** ה-API call עבר ללא שגיאה בניסיון הראשון — כלומר `gpt-image-2` אכן זמין בחשבון של המשתמש (אישור empirical שהמודל קיים, כפי שהמשתמש הצהיר). בהיעדר reference, יובל בחר ב-Golden Retriever כברירת מחדל "visually appealing" — הבחירה עצמה היא debt: אם המשתמש ירצה סגנון אחר, צריך לפתוח reference/ או לפרט יותר בבקשה.
+- **Notes / Caveats:** ה-API key נשמר במחשב המשתמש ב-`.env` (gitignored — לא הולך ל-GitHub). יובל לא הדפיס/הדליף את ערך ה-key. ה-prompt באנגלית (כפי שה-system prompt מורה) — אם המשתמש יבקש בעברית בעתיד, יובל יתרגם אוטומטית.
+- **Related:** [[yael-agent#2026-05-13 — first article rewrite]]

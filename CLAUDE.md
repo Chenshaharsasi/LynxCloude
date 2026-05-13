@@ -12,6 +12,8 @@
   - **Triggers (עברית)**: שכתב, ערוך, נסח מחדש, תרגם, סכם, מאמר, תוכן, פוסט
   - **Triggers (English)**: rewrite, edit, rephrase, translate, summarize, article, content, post
 - **יובל** - מעצב התמונות. אחראי על יצירת והפקת ויזואלים.
+  - **Triggers (עברית)**: תמונה של, ציור של, תיצור תמונה, איור
+  - **Triggers (English)**: image of, picture of, generate image, illustration, draw
 - **חן** - החוקרת. אחראית על איסוף מידע, בדיקת עובדות וביסוס תוכן.
 
 ## ניתוב (Routing)
@@ -25,13 +27,37 @@
 
 הגדרה מלאה: `.claude/agents/yael.md`. תיקיית עבודה: `yael/` (style-guide + reference). קלט: `Content/`. פלט: `Output/`.
 
+### יובל — מעצב התמונות
+מופעל כשהבקשה כוללת אחד מה-trigger keywords:
+- **עברית**: תמונה של, ציור של, תיצור תמונה, איור
+- **English**: image of, picture of, generate image, illustration, draw
+
+הגדרה מלאה: `.claude/agents/yuval.md`. תיקיית עבודה: `yuval/` (reference + outputs). מפעיל את הסקיל `gpt-image-gen` שקורא ל-OpenAI Images API (מודל `gpt-image-2`).
+
+## תהליך מאמר + תמונות (Pipeline)
+
+כשמשתמש מבקש מאמר שכולל תמונות, אני (ראובן) מתזמן את הסוכנים בסדר הבא:
+
+1. **יעל כותבת את המאמר**. תוך כדי הכתיבה היא משאירה placeholders בפורמט `{{IMAGE_NEEDED: "תיאור מפורט באנגלית של התמונה, כולל סגנון"}}` במקומות שתמונה תעזור לקריאה (גם ב-MD וגם ב-HTML, אותו טקסט בדיוק).
+2. **יעל מחזירה לי** סיכום + רשימה ממוספרת של כל ה-placeholders שהשאירה.
+3. **אני מפעיל את יובל** פעם אחת לכל placeholder, עם ה-brief שיעל ניסחה כקלט.
+4. **יובל מייצר תמונה** ל-`yuval/outputs/<YYYY-MM-DD>-<slug>.png` (עם sibling `.txt` של ה-prompt) ומחזיר לי את הנתיב.
+5. **אני משלב**: מחליף כל `{{IMAGE_NEEDED:...}}` בקבצים של יעל ב-`Output/` — ב-MD ב-`![alt](relative-path-to-image)`, ב-HTML ב-`<img src="..." alt="..." />`. שומר את הגרסה הסופית באותם נתיבים.
+
+ה-pipeline מבטיח שהתוכן רץ ביעל, הסגנון הוויזואלי יישמר ביובל, וההרכבה הסופית עוברת דרכי כדי שיהיה מקור אמת אחד לקובץ המוגמר.
+
 ## מבנה התיקיות
 
-תחת `.claude/` יושבים שלושת המרכיבים של המערכת:
+בשורש הפרויקט:
 
-- `agents/` - הגדרות הסוכנים בצוות שלי (יעל, יובל, חן)
-- `skills/` - יכולות מותאמות שהצוות יכול להשתמש בהן
-- `commands/` - פקודות מותאמות להפעלת תהליכי עבודה
+- `.claude/agents/` — הגדרות הסוכנים בצוות שלי (יעל, יובל, חן)
+- `.claude/skills/` — יכולות מותאמות (Superpowers + Obsidian + `gpt-image-gen` + …)
+- `.claude/commands/` — פקודות workflow מותאמות
+- `yael/` — תיקיית עבודה של יעל: `style-guide.md` ו-`reference/`
+- `yuval/` — תיקיית עבודה של יובל: `reference/` (תמונות השראה) ו-`outputs/` (תוצרים)
+- `Content/` — מאמרי גלם נכנסים שממתינים לשכתוב
+- `Output/` — מאמרים משוכתבים סופיים (MD + HTML), אחרי שילוב התמונות
+- `vault/` — הזיכרון ארוך-הטווח שלי (Meeting Notes, Brand Guidelines, וכו')
 
 ## הערה
 

@@ -59,3 +59,9 @@ tags:
 - **Decisions:** ה-Agent tool בהארנס הנוכחי לא רואה sub-agents מ-`.claude/agents/` — רק 6 סוכנים מובנים (claude, claude-code-guide, Explore, general-purpose, Plan, statusline-setup). העקיפה: שיגור `general-purpose` עם ה-system prompt של יעל מוטמע + הגבלת כלים מפורשת ל-Read/Write/Edit/Glob/Grep. יעל החליטה (בהיעדר style-guide אמיתי) להסיר את כל המראית של גוף-ראשון שיווקי, את ה-self-reference ל"איתי זרם", ולעבור לטון ניטרלי-אינפורמטיבי תוך שמירה על כל התוכן המהותי. RTF נשמר ב-`Content/` כמקור; MD שהומר חי לצידו כקלט אמיתי של יעל.
 - **Notes / Caveats:** הפעלה דרך `general-purpose` היא workaround עד שנמצא מנגנון נכון להפעלת sub-agents בהארנס הזה (אולי דרך CLI ישיר של Claude Code, לא דרך הצ'אט). השכתוב התבסס על שיקול דעת ולא על style-guide — כשהמשתמש יכתוב את `yael/style-guide.md`, השכתוב הבא יהיה עקבי יותר עם הסגנון המוצהר.
 - **Related:** [[claude-directory-layout]], [[project-scaffolding]]
+
+### 2026-05-13 — IMAGE_NEEDED placeholder logic added [shipped]
+- **What was done:** נוסף ל-yael.md step `### 3.5 Image placeholders` שמורה ליעל לזהות נקודות שמרוויחות מתמונה ולהשאיר `{{IMAGE_NEEDED: "English brief..."}}` גם ב-MD וגם ב-HTML. step 5 (Report back) עודכן לדרוש רשימה ממוספרת של placeholders.
+- **Decisions:** ה-brief בתוך ה-placeholder הוא באנגלית (gpt-image-2 עובד טוב יותר באנגלית; חוסך ליובל תרגום). יעל לא כופה placeholders אם המאמר לא דורש.
+- **Notes / Caveats:** השלב הזה לא ירוץ retroactively על מאמר ה-CRM שכבר שכתבתי — נדרש re-run כשנרצה גם תמונות שם.
+- **Related:** [[yuval-agent]]

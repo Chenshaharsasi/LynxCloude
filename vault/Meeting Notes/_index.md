@@ -18,3 +18,4 @@ tags:
 - [[vault-bootstrap]] — הקמת ה-vault והתיעוד הראשוני.
 - [[skill-creator-install]] — התקנת `example-skills` (כולל skill-creator) ב-project scope.
 - [[yael-agent]] — הגדרת הסוכנת יעל (sub-agent ראשון של ראובן).
+- [[yuval-agent]] — הגדרת הסוכן יובל + סקיל `gpt-image-gen` + pipeline יעל→יובל.

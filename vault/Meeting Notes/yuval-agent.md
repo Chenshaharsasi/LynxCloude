@@ -57,3 +57,9 @@ tags:
 - **Decisions:** ה-API call עבר ללא שגיאה בניסיון הראשון — כלומר `gpt-image-2` אכן זמין בחשבון של המשתמש (אישור empirical שהמודל קיים, כפי שהמשתמש הצהיר). בהיעדר reference, יובל בחר ב-Golden Retriever כברירת מחדל "visually appealing" — הבחירה עצמה היא debt: אם המשתמש ירצה סגנון אחר, צריך לפתוח reference/ או לפרט יותר בבקשה.
 - **Notes / Caveats:** ה-API key נשמר במחשב המשתמש ב-`.env` (gitignored — לא הולך ל-GitHub). יובל לא הדפיס/הדליף את ערך ה-key. ה-prompt באנגלית (כפי שה-system prompt מורה) — אם המשתמש יבקש בעברית בעתיד, יובל יתרגם אוטומטית.
 - **Related:** [[yael-agent#2026-05-13 — first article rewrite]]
+
+### 2026-05-13 — first pipeline integration (image inserted into article) [shipped]
+- **What was done:** ראובן שילב את תמונת הכלב למאמר ה-CRM של יעל כ-hero. ב-MD: `![alt](../yuval/outputs/2026-05-13-friendly-dog-portrait.png)` אחרי ה-H1. ב-HTML: `<img>` עם inline style (`max-width: 100%`, `border-radius: 8px`, `margin: 0 auto 2rem`) באותו מקום. השתמש בנתיב יחסי `../yuval/outputs/...` (לא העתקה ל-`Output/`) — single source של התמונה נשמר ב-`yuval/outputs/`.
+- **Decisions:** Demo-mode בלבד — התמונה לא קשורה תוכנית למאמר (כלב vs CRM). ה-alt-text מציין במפורש "אינה קשורה לתוכן המאמר" כדי שלא תיווצר אשליה שזה אינטגרציה semantic. בהפעלה אמיתית של ה-pipeline (יעל כותבת עם `{{IMAGE_NEEDED:...}}` → יובל מייצר ל-prompts → ראובן ממיר ל-`<img>`/`![]()`), התוכן והתמונות יהיו תואמים.
+- **Notes / Caveats:** ה-HTML עדיין לא מכיל `img` בלוק CSS — השתמשתי ב-inline style במקום. אם יהיו תמונות נוספות בעתיד באותו מאמר, שווה לעקור את ה-style ל-CSS block.
+- **Related:** [[yael-agent#2026-05-13 — first article rewrite]]

@@ -53,3 +53,9 @@ tags:
 - **Decisions:** הכפילות בין `הצוות שלי` ל-`ניתוב` מכוונת — האחת נקראת כ-quick reference card, השנייה מסבירה איך המנגנון עובד. לא הוסר כלום.
 - **Notes / Caveats:** המקור המחייב ל-routing נשאר ה-`description` ב-`.claude/agents/yael.md`; ה-CLAUDE.md הוא תיעוד אנושי.
 - **Related:** [[claude-directory-layout]]
+
+### 2026-05-13 — first article rewrite [shipped]
+- **What was done:** המשתמש שם `Content/מאמר לדגומא.rtf` (מאמר על מערכות CRM, ~57KB RTF). ראובן המיר ל-MD דרך `textutil -convert txt` ל-`Content/מאמר לדגומא.md`. יעל הופעלה ושכתבה — שני פלטים נוצרו ב-`Output/`: גרסת Markdown נקייה (14KB, H1/H2 + bullets + bolded terms) וגרסת HTML self-contained (16KB, 213 שורות, `<html lang="he" dir="rtl">`, inline CSS, ללא תלויות חיצוניות).
+- **Decisions:** ה-Agent tool בהארנס הנוכחי לא רואה sub-agents מ-`.claude/agents/` — רק 6 סוכנים מובנים (claude, claude-code-guide, Explore, general-purpose, Plan, statusline-setup). העקיפה: שיגור `general-purpose` עם ה-system prompt של יעל מוטמע + הגבלת כלים מפורשת ל-Read/Write/Edit/Glob/Grep. יעל החליטה (בהיעדר style-guide אמיתי) להסיר את כל המראית של גוף-ראשון שיווקי, את ה-self-reference ל"איתי זרם", ולעבור לטון ניטרלי-אינפורמטיבי תוך שמירה על כל התוכן המהותי. RTF נשמר ב-`Content/` כמקור; MD שהומר חי לצידו כקלט אמיתי של יעל.
+- **Notes / Caveats:** הפעלה דרך `general-purpose` היא workaround עד שנמצא מנגנון נכון להפעלת sub-agents בהארנס הזה (אולי דרך CLI ישיר של Claude Code, לא דרך הצ'אט). השכתוב התבסס על שיקול דעת ולא על style-guide — כשהמשתמש יכתוב את `yael/style-guide.md`, השכתוב הבא יהיה עקבי יותר עם הסגנון המוצהר.
+- **Related:** [[claude-directory-layout]], [[project-scaffolding]]

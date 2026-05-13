@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"SessionStart\",\"additionalContext\":\"מדיניות הפרויקט: לפני כל משימה הפעל את הסקיל obsidian-vault-workflow — קרא topic file רלוונטי ב-vault/Meeting Notes/ + 2-3 פתקי פגישות אחרונים. בסוף המשימה הוסף Session Log entry עם [status] + Open Questions + Related [[wikilinks]].\"}}'"
+          }
+        ]
+      }
+    ]
+  }
+}

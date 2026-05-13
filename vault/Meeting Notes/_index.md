@@ -17,3 +17,4 @@ tags:
 - [[obsidian-skills]] — 3 הסקילים של Obsidian (vault-workflow, markdown, bases).
 - [[vault-bootstrap]] — הקמת ה-vault והתיעוד הראשוני.
 - [[skill-creator-install]] — התקנת `example-skills` (כולל skill-creator) ב-project scope.
+- [[yael-agent]] — הגדרת הסוכנת יעל (sub-agent ראשון של ראובן).

@@ -47,3 +47,9 @@ tags:
 - **Decisions:** style-guide.md נוצר כ-stub ולא מולא בתוכן — המשתמש יעשה את זה בנפרד. ה-HTML יהיה self-contained עם inline CSS (max-width 720px, RTL, system-ui), בלי תבנית חיצונית. ה-trigger keywords הוטמעו ב-`description` של ה-agent (המנגנון הסטנדרטי של Claude Code) וגם תועדו ב-CLAUDE.md לשקיפות.
 - **Notes / Caveats:** יעל לא תוכל לפעול בפועל עד שיהיה תוכן ב-`Content/` ומדריך אמיתי ב-`style-guide.md`. ה-stub יחזיר אזהרה כשתקרא אותו (לפי הוראה ב-system prompt: "ציין לראובן והמשך").
 - **Related:** [[claude-directory-layout]], [[project-scaffolding]]
+
+### 2026-05-13 — trigger keywords surfaced in team list [shipped]
+- **What was done:** ה-trigger keywords של יעל הוצמדו ישירות לשורה שלה ב-`## הצוות שלי` ב-CLAUDE.md, בנוסף להופעה הקיימת ב-`## ניתוב`. שתי שורות sub-bullet — אחת עברית, אחת אנגלית.
+- **Decisions:** הכפילות בין `הצוות שלי` ל-`ניתוב` מכוונת — האחת נקראת כ-quick reference card, השנייה מסבירה איך המנגנון עובד. לא הוסר כלום.
+- **Notes / Caveats:** המקור המחייב ל-routing נשאר ה-`description` ב-`.claude/agents/yael.md`; ה-CLAUDE.md הוא תיעוד אנושי.
+- **Related:** [[claude-directory-layout]]

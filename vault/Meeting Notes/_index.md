@@ -15,4 +15,5 @@ tags:
 - [[claude-directory-layout]] — מבנה `.claude/` (agents, commands, skills) ולמי הוא משויך.
 - [[superpowers-plugin]] — 14 ה-skills מ-Superpowers plugin.
 - [[obsidian-skills]] — 3 הסקילים של Obsidian (vault-workflow, markdown, bases).
-- [[vault-bootstrap]] — הקמת ה-vault והתיעוד הראשוני (סשן זה).
+- [[vault-bootstrap]] — הקמת ה-vault והתיעוד הראשוני.
+- [[skill-creator-install]] — התקנת `example-skills` (כולל skill-creator) ב-project scope.

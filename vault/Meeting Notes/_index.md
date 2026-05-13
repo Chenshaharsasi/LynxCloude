@@ -20,3 +20,4 @@ tags:
 - [[yael-agent]] — הגדרת הסוכנת יעל (sub-agent ראשון של ראובן).
 - [[yuval-agent]] — הגדרת הסוכן יובל + סקיל `gpt-image-gen` + pipeline יעל→יובל.
 - [[chen-agent]] — הגדרת הסוכנת חן (חוקרת הרשת) + Pipeline המלא של 3 הסוכנים.
+- [[reuven-as-studio-manager]] — הגדרה מחדש של ראובן ושל הצוות לקונטקסט סטודיו לינקס אשקלון (6 sub-agents).

@@ -11,3 +11,9 @@
 
 # Obsidian (per-machine workspace state — not project knowledge)
 .obsidian/
+
+# Studio data — contains member PII and financial info; never commit
+data/members.csv
+data/budget.csv
+data/revenue.csv
+data/*.private.csv
